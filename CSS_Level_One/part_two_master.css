@@ -1,0 +1,21 @@
+body{
+  background: url(https://image.freepik.com/free-vector/abstract-technology-particle-background_52683-25766.jpg);
+  background-repeat: no-repeat;
+}
+
+div{
+  background: #ec1212;
+  border-color: rgb(26, 176, 2);
+  border-width: 5px;
+  border-style: double;
+
+}
+
+p{
+  color: #ffffff;
+}
+
+span{
+  color: green;
+  background: white;
+}
