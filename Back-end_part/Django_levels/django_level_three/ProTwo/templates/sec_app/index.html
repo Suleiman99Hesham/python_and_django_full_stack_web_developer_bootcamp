@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <title>Home</title>
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" >Welcome</a>
+        </div>
+    
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="register/">Sign Up<span class="sr-only">(current)</span></a></li>
+    </nav>
+
+    <div class="container">
+        <div class="jumbotron">
+            <div class="container">
+                {% if users %}
+                <h1>Here are your users:</h1>
+                <ol>
+                    {% for user in users %}
+                    <li>
+                        User Info: 
+                        <ul>
+                            <li> First Name: {{ user.first_name }} </li>
+                            <li> Last Name: {{user.last_name}} </li>
+                            <li> Email: {{user.email}} </li>
+                        </ul>
+                    </li>
+                    {% endfor %}
+                </ol>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
