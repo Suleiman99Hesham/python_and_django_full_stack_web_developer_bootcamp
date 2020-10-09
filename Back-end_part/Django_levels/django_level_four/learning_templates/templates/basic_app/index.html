@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+
+{% extends 'basic_app/base.html' %}
+{% block title %}
+    <title>Home</title>
+{% endblock title %}
+{% block content %}
+    <h1>WELCOME TO INDEX </h1>
+    <!-- <h2>This is index.html page showing!</h2> -->
+    <h1> {{ text|cut:'hello' }} </h1>
+    <h1> {{ number | add:"50" }} </h1>
+{% endblock content %}
