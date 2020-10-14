@@ -6,27 +6,16 @@
 {% endblock title %}
 
 {% block content_block %}
-    {% if registered %}
-    
     <div class="jumbotron">
         <div class="container">
-            <h1> Thank you for registering! </h1>            
+            <h1> Register here! </h1>
+            <h3>Fill out the form:</h3>
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ user_form.as_p }}
+                {{ profile_form.as_p }}
+                <input type="submit" value="Register" class="btn btn-primary btn-lg">
+            </form>
         </div>
     </div>
-    
-    {% else %}
-        
-        <div class="jumbotron">
-            <div class="container">
-                <h1> Register here! </h1>
-                <h3>Fill out the form:</h3>
-                <form action="" method="post" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    {{ user_form.as_p }}
-                    {{ profile_form.as_p }}
-                    <input type="submit" value="Register" class="btn btn-success">
-                </form>
-            </div>
-        </div>
-    {% endif %}
 {% endblock content_block %}

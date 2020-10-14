@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 # Create your views here.
 
@@ -22,7 +23,6 @@ def user_logout(request):
 
 def register(request):
     
-    registered = False
     if request.method == 'POST':
         
         user_form = UserForm(request.POST)
@@ -40,8 +40,11 @@ def register(request):
             if 'profile_pic' in request.FILES:
                 profile.profile_pic = request.FILES['profile_pic']
             profile.save()
-            registered = True
 
+            user_name = user_form.cleaned_data.get('username')
+            messages.success(request, 'Account was created for '+user_name)
+            
+            return redirect('basic_app:user_login')
         else:
             print(user_form.errors, profile_form.errors)
     else:
@@ -51,7 +54,6 @@ def register(request):
     context_data = {
         'user_form' : user_form,
         'profile_form' : profile_form,
-        'registered' : registered,
     }
 
     return render(request, 'basic_app/registration.html', context = context_data)
@@ -70,12 +72,10 @@ def user_login(request):
             else:
                 return HttpResponse('ACOUNT IS NOT ACTIVE')
         else:
-            print('Someone tried to login and failed!')
-            print('Username: {} and Password: {}'.format(username, password))
-            return HttpResponse('INVALID LOGIN DETAILED SUPPLIED!')
-    else:
-        context = {}
-        return render(request, 'basic_app/login.html',context)
+            messages.info(request, 'Username OR Password is incorrect!')
+
+    context = {}
+    return render(request, 'basic_app/login.html',context)
 
 
 

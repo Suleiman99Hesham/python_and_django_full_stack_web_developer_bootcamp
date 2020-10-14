@@ -16,9 +16,14 @@
                 <label for="password">Password</label>
                 <input type="password" name="password">
         
-                <input type="submit" value="Login" class="btn btn-success">
+                <input type="submit" value="Login" class="btn btn-primary">
                 
-            </form>  
+            </form>
+            {% for message in messages %}
+                <div class="alert alert-info" role="alert">                
+                    <p id="messages"> {{ message }} </p>
+                </div>
+            {% endfor %} 
         </div>
     </div>
 {% endblock content_block %}
