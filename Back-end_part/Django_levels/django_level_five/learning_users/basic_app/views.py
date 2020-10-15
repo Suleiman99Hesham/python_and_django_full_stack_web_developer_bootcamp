@@ -5,6 +5,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from .models import UserProfileInfo
 
 # Create your views here.
 
@@ -13,8 +14,13 @@ def index(request):
     return render(request, 'basic_app/index.html')
 
 @login_required(login_url='basic_app:user_login')
-def special(request):
-    return HttpResponse('YOU ARE LOGED IN , NICE')
+def profile(request):
+    user_profile_data = UserProfileInfo.objects.get(user = request.user)
+    context = {
+        'portofolio':user_profile_data.portofolio_site,
+        'profile_picture':user_profile_data.profile_pic,
+    }
+    return render(request, 'basic_app/profile.html', context=context)
 
 @login_required
 def user_logout(request):

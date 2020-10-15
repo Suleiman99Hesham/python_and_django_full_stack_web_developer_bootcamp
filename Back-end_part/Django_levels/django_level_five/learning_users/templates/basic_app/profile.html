@@ -1,0 +1,26 @@
+{% extends 'basic_app/base.html' %}
+
+{% block title %}
+    profile
+{% endblock title %}
+
+{% block content_block %}
+    
+    <style>
+        .data-type{
+            color: cornflowerblue;
+        }
+    </style>
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Personal Data</h1>
+            <h2><span class="data-type">User Name:</span> {{request.user}}</h2>
+            <h2><span class="data-type">Email:</span> {{request.user.email}}</h2>
+            <h2><span class="data-type">Portofoli site:</span> {{portofolio}}</h2>
+            <h2><span class="data-type">Profile Picture:</span> {{profile_picture}}</h2>
+            
+        </div>
+    </div>
+    
+{% endblock content_block %}
+
